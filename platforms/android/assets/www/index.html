@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+		
+    </head>
+    <body>
+        <div class="app">
+            <h1>ShareApp</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready to share data...</p>
+				<h3 onclick="network();">Network</h3>
+				<h3 onclick="networkInfo();">networkInfo</h3>
+            </div>
+			<br>
+			
+			<h3 onclick="sharedata();">Share</h3>
+			<h3 onclick="shareWhatsapp();">WhatsApp</h3>
+			<h3 onclick="shareFacebook();">Facebook</h3>
+			<h3 onclick="shareGmail();">Gmail</h3>
+			<h3 onclick="shareTwitter();">Twitter</h3>
+			<h3 onclick="viaSMS();">SMS</h3>
+			<h3 onclick="viaFacebook();">Via Facebook</h3>
+			<br><br>
+			<h3 onclick="choosefile();">Choose File</h3>
+        </div>
+		
+		
+		
+		
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+		
+		//http://plugins.telerik.com/cordova/plugin/socialsharing
+		//cordova plugin add https://github.com/Telerik-Verified-Plugins/SocialSharing
+		//https://github.com/Telerik-Verified-Plugins/SocialSharing
+		
+			function sharedata(){
+				alert('sharedata');
+				window.plugins.socialsharing.share('How are You?','Personal',null,null,successCallback,errorCallback);
+				function successCallback(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				}
+				function errorCallback(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				}
+			}
+			
+			
+			function shareWhatsapp(){
+				alert('Whatsapp');
+				window.plugins.socialsharing.shareViaWhatsApp('How are You?',null,null,null,wsuccess,werror);
+				function wsuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				}
+				function werror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				}	
+			}
+			
+			
+			function shareFacebook(){
+				alert('Facebook');
+				window.plugins.socialsharing.shareViaFacebook('How are You?',null,null,null,fsuccess,ferror);
+				function fsuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				}
+				function ferror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				}
+			}
+			
+			
+			function shareTwitter(){
+				 alert('Twitter');
+				 window.plugins.socialsharing.shareViaTwitter('How are You?',null,null,null,Tsuccess,Terror);
+				
+				 function Tsuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				 }
+				
+				 function Terror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				 }
+			}
+			
+			
+			
+			function shareGmail(){
+				 alert('Twitter');
+				 window.plugins.socialsharing.shareViaEmail('How are You?','Personal',null,null,null,null,Gsuccess,Gerror);
+				
+				 function Gsuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				 }
+				
+				 function Gerror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				 }
+			}
+			
+			
+			
+			function viaSMS(){
+				 alert('viaSMS');
+				 window.plugins.socialsharing.shareViaSMS('How are You?','',Msuccess,Merror);
+				
+				 function Msuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				 }
+				
+				 function Merror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				 }
+			}
+			
+			
+			function viaFacebook(){
+				 alert('viaFacebook');
+				 window.plugins.socialsharing.shareVia('facebook','How are You?',null,null,null,ffsuccess,fferror);
+				
+				 function ffsuccess(e){
+					 alert(JSON.stringify(e));
+					 alert('successCallback');
+				 }
+				
+				 function fferror(e){
+					  alert(JSON.stringify(e));
+					  alert('errorCallback');
+				 }
+			}
+			
+			
+			
+			
+			//https://github.com/don/cordova-filechooser
+			function choosefile(){
+				 fileChooser.open(function(uri) {
+					alert(uri);
+				});
+			}
+			
+			
+			function network(){
+				alert('network');
+				var networkState = navigator.connection.type;
+				alert(networkState);
+				if (networkState !== Connection.NONE) {
+					 alert('online');
+				}else{
+					  alert('offline');
+				}
+				
+			}
+			
+			function networkInfo() {
+			   alert('networkInfo');
+			   var networkState = navigator.connection.type;
+			   var states = {};
+				
+			   states[Connection.UNKNOWN]  = 'Unknown connection';
+			   states[Connection.ETHERNET] = 'Ethernet connection';
+			   states[Connection.WIFI]     = 'WiFi connection';
+			   states[Connection.CELL_2G]  = 'Cell 2G connection';
+			   states[Connection.CELL_3G]  = 'Cell 3G connection';
+			   states[Connection.CELL_4G]  = 'Cell 4G connection';
+			   states[Connection.CELL]     = 'Cell generic connection';
+			   states[Connection.NONE]     = 'No network connection';
+			   alert('Connection type: ' + states[networkState]);
+			}
+
+			function onOffline() {
+			   alert('You are now offline!');
+			}
+
+			function onOnline() {
+			   alert('You are now online!');
+			}
+			
+			
+		
+		</script>
+    </body>
+</html>

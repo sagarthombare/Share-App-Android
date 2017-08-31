@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.incrust.share"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.incrust.share"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.incrust.share"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.incrust.share"
+        },
+        "com.megster.cordova.FileChooser": {
+            "PACKAGE_NAME": "com.incrust.share"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.incrust.share"
+        }
+    },
+    "dependent_plugins": {}
+}
